@@ -15,12 +15,12 @@ class OpenAiService:
         self.personal_name = constants.personal_name
         self.resume_skills = constants.skills
 
-    def get_resume_skills(self):
-        return self.resume_skills
 
     def match_skills(self, job_description, resume_skills):
+
         matched_skills = [skill for skill in resume_skills if skill.lower() in job_description.lower()]
         return matched_skills
+
 
     def generate_resume_bullet_points(self, job_description, matched_skills):
 
@@ -30,38 +30,22 @@ class OpenAiService:
             f"write 3 concise and professional resume bullet points tailored to this job."
         )
 
-        response = self.client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
-            ],
-            model=self.model,
-        )
-        choices = response.choices
-        return choices[0].message.content
+        return self._get_content(prompt)
+
 
     def generate_cover_letter(self, job_description, matched_skills):
+
         prompt = (
             f"Based on the following job description:\n{job_description}\n\n"
             f"and these skills: {', '.join(matched_skills)}, "
             f"write a short paragraph for a cover letter tailored to this job. Sign it with {self.personal_name}"
         )
 
-        response = self.client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
-            ],
-            model=self.model,
-        )
-        choices = response.choices
-        return choices[0].message.content
+        return self._get_content(prompt)
+
 
     def generate_resume(self, job_description, matching_skills):
+
         prompt = (
             f"Based on the following job description:\n{job_description}\n\n"
             f"and these skills: {', '.join(matching_skills)}, "
@@ -69,18 +53,7 @@ class OpenAiService:
             f"do not include education, only have overview and key achievements. do not include any job specifically"
         )
 
-        response = self.client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
-            ],
-            model=self.model,
-        )
-        choices = response.choices
-        return choices[0].message.content
-
+        return self._get_content(prompt)
 
 
     def get_list_of_skills_from_job_description(self, job_description):
@@ -89,18 +62,8 @@ class OpenAiService:
             f"Based on the following job description:\n {job_description}\n\n"
             f"Parse as many skills as possible for a resume as a comma seperated list"
         )
+        return self._get_content(prompt)
 
-        response = self.client.chat.completions.create(
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
-            ],
-            model=self.model,
-        )
-        choices = response.choices
-        return choices[0].message.content
 
     def update_resume(self, doc_path, tailored_section, matched_skills):
         doc = Document(doc_path)
@@ -117,6 +80,22 @@ class OpenAiService:
                 #paragraph.text += "\nMatched Skills: " + ", ".join(matched_skills)
 
         return doc
+
+    def get_resume_skills(self):
+        return self.resume_skills
+
+    def _get_content(self, prompt):
+        response = self.client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            model=self.model,
+        )
+        choices = response.choices
+        return choices[0].message.content
 
     def _get_client(self):
 
