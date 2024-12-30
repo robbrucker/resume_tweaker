@@ -1,5 +1,5 @@
 # resume_tweaker
-Put in a job description and your resume, and get AI to tweak your resume to the job description
+Put in a job description and your resume, and use AI to tweak your resume to the job description
 
 ## Getting started
 - Generate OpenAI key and put it in a file called .env 
@@ -25,4 +25,7 @@ Put in a job description and your resume, and get AI to tweak your resume to the
 `pip install -r requirements.txt`
 
 # 5. Run flask app
-`python3 app`
+`python app.py`
+
+# 6. Open 
+http://127.0.0.1:5001/ (or whatever port you used)
