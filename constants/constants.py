@@ -6,7 +6,7 @@ class Constants:
             "Java", "Python", "Ruby", "JavaScript", "Kotlin", "PHP", "TypeScript",
 
             # Frameworks
-            "Spring", "Node.js", "Rails", "Django", "Laravel", "Vue.js", "Angular",
+            "Spring", "Node.js", "Rails", "Django", "Laravel", "Vue.js", "Angular", "Flask",
 
             # Databases and Data Tools
             "PostgreSQL", "MySQL", "SQL Server", "SQLite", "Redshift", "MongoDB", "ElasticSearch", "Redis",
@@ -33,3 +33,6 @@ class Constants:
         self.personal_name = "Rob Brucker"
 
         self.model = "gpt-3.5-turbo"
+
+        self.overview_section = "Overview"
+        self.technologies_section = "Technologies"
