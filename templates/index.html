@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Tailoring Tool</title>
+</head>
+<body>
+<h1>AI-Powered Resume Tailoring Tool</h1>
+<form action="/tailor" method="post" enctype="multipart/form-data">
+    <label for="job_description">Job Description:</label><br>
+    <textarea id="job_description" name="job_description" rows="10" cols="50" placeholder="Paste the job description here..." required></textarea><br><br>
+
+    <label for="resume_file">Upload Your Resume (Word Document):</label><br>
+    <input type="file" id="resume_file" name="resume_file" accept=".docx" required><br><br>
+
+    <button type="submit">Tailor My Resume</button>
+</form>
+</body>
+</html>
