@@ -30,7 +30,7 @@ class Constants:
             "Stakeholder Communication"
         ]
 
-        self.personal_name = "Rob Brucker"
+        self.full_name = "Rob Brucker"
 
         self.model = "gpt-3.5-turbo"
 

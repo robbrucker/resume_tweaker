@@ -12,7 +12,7 @@ class OpenAiService:
         load_dotenv('../.env')
         self.client = self._get_client()
         self.model = constants.model
-        self.personal_name = constants.personal_name
+        self.full_name = constants.full_name
         self.resume_skills = constants.skills
         self.overview_section = constants.overview_section
 
@@ -33,7 +33,7 @@ class OpenAiService:
         prompt = (
             f"Based on the following job description:\n{job_description}\n\n"
             f"and these skills: {', '.join(matched_skills)}, "
-            f"write a short paragraph for a cover letter tailored to this job. Sign it with {self.personal_name}"
+            f"write a short paragraph for a cover letter tailored to this job. Sign it with {self.full_name}"
         )
 
         return self._get_content(prompt)
@@ -42,7 +42,7 @@ class OpenAiService:
 
         prompt = (
             f"write a file name for a custom resume based on the following job description:\n{job_description}\n\n"
-            f"and include this name at the beginning {self.personal_name}"
+            f"and include this name at the beginning {self.full_name}"
         )
 
         return self._get_content(prompt)
