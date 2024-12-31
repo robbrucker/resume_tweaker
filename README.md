@@ -1,5 +1,5 @@
 # resume_tweaker
-Put in a job description and your resume, and use AI to tweak your resume to the job description
+Put in a job description (text input) and upload your resume (docx), and use AI to tweak your resume to the job description
 
 ## Getting started
 - Generate OpenAI key and put it in a file called .env 
