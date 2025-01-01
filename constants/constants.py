@@ -32,7 +32,7 @@ class Constants:
 
         self.full_name = "Rob Brucker"
 
-        self.model = "gpt-3.5-turbo"
+        self.model = "gpt-4o"
 
         self.overview_section = "Overview"
         self.technologies_section = "Technologies"

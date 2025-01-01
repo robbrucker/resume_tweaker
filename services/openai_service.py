@@ -43,6 +43,7 @@ class OpenAiService:
         prompt = (
             f"write a file name for a custom resume based on the following job description:\n{job_description}\n\n"
             f"and include this name at the beginning {self.full_name}"
+            f"do not include file extension {self.full_name}"
         )
 
         return self._get_content(prompt)
@@ -57,6 +58,8 @@ class OpenAiService:
             f"only have overview and key achievements sections"
             f"do not include education"
             f"do not include any company name specifically"
+            f"key achievements should not be more than 5 bullet points"
+            f"overview should not be more than 4 sentences"
             f"Your objective is to get the hiring manager or recruiter to schedule an interview"
         )
 
